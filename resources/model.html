@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Railway Enquiry</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Your custom CSS link (if any) -->
+    <link rel="stylesheet" href="path/to/your/custom.css">
+</head>
+
+<body class="font-sans bg-gray-100">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto">
+            <a class="text-white text-xl font-semibold" href="#">Railway Enquiry System</a>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
+
+        <!-- Search Form -->
+        <form class="mb-8">
+            <div class="flex space-x-4">
+                <!-- Source Station Combo Box -->
+                <div class="w-1/2">
+                    <label for="sourceStation" class="block text-sm font-medium text-gray-700">Source Station</label>
+                    <select id="sourceStation" name="sourceStation"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <!-- Options dynamically populated from database or Django context -->
+                        <option value="station1">Station 1</option>
+                        <option value="station2">Station 2</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+
+                <!-- Destination Station Combo Box -->
+                <div class="w-1/2">
+                    <label for="destinationStation" class="block text-sm font-medium text-gray-700">Destination
+                        Station</label>
+                    <select id="destinationStation" name="destinationStation"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <!-- Options dynamically populated from database or Django context -->
+                        <option value="stationA">Station A</option>
+                        <option value="stationB">Station B</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+
+                <!-- Search Button -->
+                <div>
+                    <button type="submit"
+                            class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Search Results Table -->
+        <table class="table table-bordered">
+            <thead class="bg-blue-500 text-white">
+                <tr>
+                    <th>Train No</th>
+                    <th>Train Name</th>
+                    <th>From-To Code</th>
+                    <th>Starting Station Name</th>
+                    <th>Ending Station Name</th>
+                    <th>Arrival Time</th>
+                    <th>Departure Time</th>
+                    <th>Route</th>
+                    <th>Available Seats</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows dynamically populated from search results -->
+                <tr>
+                    <td>123</td>
+                    <td>Express</td>
+                    <td>ABC-XYZ</td>
+                    <td>Station ABC</td>
+                    <td>Station XYZ</td>
+                    <td>12:00 PM</td>
+                    <td>2:00 PM</td>
+                    <td>ABC - DEF - GHI - XYZ</td>
+                    <td>50</td>
+                    <td>$25.00</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Your custom JS scripts (if any) -->
+    <script src="path/to/your/custom.js"></script>
+</body>
+
+</html>

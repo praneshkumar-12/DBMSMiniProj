@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* Modern CSS */
+.journey-date {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.journey-date:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+</style>
+  <div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
+
+    <div class="flex justify-center">
+      <div class="text-4xl font-bold">Search for Trains
+    </div>
+    </div>
+    <br>
+    <!-- Search Form -->
+    <form class="mb-8" action="{% url 'search_for_trains' %}" method="post">
+      {% csrf_token %}
+        <div class="flex space-x-4">
+            <!-- Source Station Combo Box -->
+            <div class="w-1/2">
+                <label for="sourceStation" class="block text-sm font-medium text-gray-700">Source Station</label>
+                <select id="sourceStation" name="sourceStation"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <!-- Options dynamically populated from database or Django context -->
+                    {% for station_details in stations.values %}
+                      <option value="origin-{{ station_details.stationid }}">{{station_details.stationid }} - {{ station_details.stationname }}</option>
+                    {% endfor %}
+                    <!-- <option value="station2">Station 2</option> -->
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <!-- Destination Station Combo Box -->
+            <div class="w-1/2">
+                <label for="destinationStation" class="block text-sm font-medium text-gray-700">Destination
+                    Station</label>
+                <select id="destinationStation" name="destinationStation"
+                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                      {% for station_details in stations.values %}
+                        <option value="dest-{{ station_details.stationid }}">{{station_details.stationid }} - {{ station_details.stationname }}</option>
+                      {% endfor %}
+                </select>
+            </div>
+
+            <div>
+              <label for="journey-date" class="block text-sm font-medium text-gray-700">Journey Date</label>
+              <input type="date" id="journey-date" name="journey-date" class="journey-date">
+            </div>
+
+            <!-- Search Button -->
+            <div>
+                <button
+                        type="submit"
+                        class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+                        onclick="searchTrains()">
+                    Search
+                </button>
+            </div>
+        </div>
+        <input type="text" name="origin" id="origin" style="display:none"></input>
+        <input type="text" name="destination" id="destination" style="display:none"></input>
+      </form>
+
+    <!-- Search Results Table -->
+    <table class="table table-bordered">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th>S.No</th>
+                <th>Train No</th>
+                <th>Train Name</th>
+                <th>Departure Station</th>
+                <th>Departure Time</th>
+                <th>Arrival Station</th>
+                <th>Arrival Time</th>
+                <th>Journey Time</th>
+                <th>Available Seats</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Route</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for sno, train_detail in trains.items %}
+          <tr>
+            <td>{{ sno }}</td>
+            <td>{{ train_detail.TrainID }}</td>
+            <td>{{ train_detail.TrainName }}</td>
+            <td>{{ train_detail.DepartingStation }}</td>
+            <td>{{ train_detail.DepartureTime }}</td>
+            <td>{{ train_detail.ArrivalStation }}</td>
+            <td>{{ train_detail.ArrivalTime }}</td>
+            <td>{{ train_detail.JourneyTime }}</td>
+            <td>{{ train_detail.AvailableSeats }}</td>
+            <td>₹{{ train_detail.Cost }}</td>
+            <td>{{ train_detail.RunningStatus }}</td>
+            <td><button name="{{ train_detail.TrainID }}_{{ train_detail.DepartingStation }}_{{ train_detail.ArrivalStation }}" id="route-btn" class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+              onclick="displayRoute(this.name)">Show Route</button></td>
+          </tr>
+          {% endfor %}
+            <!-- Table rows dynamically populated from search results -->
+            <!-- <tr>
+                <td>123</td>
+                <td>Express</td>
+                <td>ABC-XYZ</td>
+                <td>Station ABC</td>
+                <td>Station XYZ</td>
+                <td>12:00 PM</td>
+                <td>2:00 PM</td>
+                <td>ABC - DEF - GHI - XYZ</td>
+                <td>50</td>
+                <td>$25.00</td>
+            </tr> -->
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+  </div>
+<script>
+  {% if error %}
+    alert(" {{ error }}");
+  {% endif %}
+
+  {% if sel_origin %}
+    document.getElementById("sourceStation").value = "origin-{{sel_origin}}";
+    document.getElementById("destinationStation").value = "dest-{{sel_dest}}";
+  {% endif %}
+
+  {% if cal_date %}
+    document.getElementById("journey-date").value = "{{cal_date}}";
+  {% endif %}
+  
+function searchTrains(){
+  origin_station = document.getElementById("sourceStation").options[document.getElementById("sourceStation").selectedIndex].value;
+  dest_station = document.getElementById("destinationStation").options[document.getElementById("destinationStation").selectedIndex].value;
+  
+  origin_station = origin_station.replace("origin-", "");
+  dest_station = dest_station.replace("dest-", "");
+
+  console.log(origin_station, dest_station);
+
+document.getElementById("origin").value=origin_station;
+document.getElementById("destination").value=dest_station;
+}
+
+function displayRoute(route_details){
+  url = "/res/app/show_route/" + route_details + "/";
+
+  console.log(url);
+
+  window.open(url, '_blank').focus()
+}
+
+
+//   if (origin_station == dest_station){
+//     alert("Origin and Destination station cannot be the same!")
+//   }
+//   else{
+
+//     var myResponse;
+
+//     $.ajaxSetup({
+//                 async: false
+//             });
+
+//     $.ajax({
+//         type: "POST",
+//         url: "{% url 'search_for_trains' %}",
+//         data: {
+//           csrfmiddlewaretoken: '{{ csrf_token }}',
+//           origin: origin_station,
+//           destination: dest_station,
+//         },
+//         success: function(response){
+//           myResponse = response;
+//         }
+//     });
+
+//     console.log(myResponse);
+
+
+//   }
+//   console.log(origin_station, dest_station);
+// }
+
+</script>
+{% endblock %}

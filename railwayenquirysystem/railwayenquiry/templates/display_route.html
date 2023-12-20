@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
+
+    <div class="flex justify-center">
+        <div class="text-4xl font-bold">{{ train_number}} - {{ train_name }}
+        </div>
+    </div>  
+
+    <br>
+
+    <div class="flex justify-center">
+        <div class="text-2xl font-bold">{{ source_station }} ({{ source_station_code }}) to {{ destination_station }} ({{ destination_station_code }})</div>
+    </div>  
+    
+    <br>
+  
+    <table class="table table-bordered">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th>S.No</th>
+                <th>Station</th>
+                <th>Arrival Time</th>
+                <th>Departure Time</th>
+                <th>Journey Time</th>
+                <th>Halt Time</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for sno, train_detail in route.items %}
+          <tr>
+            <td>{{ sno }}</td>
+            <td>{{ train_detail.haltstationid }} - {{ train_detail.station_name }}</td>
+            <td>{{ train_detail.arrivaltime }}</td>
+            <td>{{ train_detail.departuretime }}</td>
+            <td>{{ train_detail.JourneyTime }}</td>
+            <td>{{ train_detail.halttime }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  </div>
+{% endblock %}

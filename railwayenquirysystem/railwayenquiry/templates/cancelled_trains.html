@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
+    <div class="flex justify-center">
+        <div class="text-4xl font-bold">Cancelled/Diverted Trains
+      </div>
+      </div>
+      <br>
+    <!-- Search Results Table -->
+    <table class="table table-bordered">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th>S.No</th>
+                <th>Train No</th>
+                <th>Train Name</th>
+                <th>Date</th>
+                <th>From Station</th>
+                <th>To Station</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for sno, train_detail in trains.items %}
+          <tr>
+            <td>{{ sno }}</td>
+            <td>{{ train_detail.TrainID }}</td>
+            <td>{{ train_detail.TrainName }}</td>
+            <td>{{ train_detail.Date }}</td>
+            <td>{{ train_detail.FromStation }}</td>
+            <td>{{ train_detail.ToStation }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

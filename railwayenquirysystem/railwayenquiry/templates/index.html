@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Railway Enquiry System</title>
+</head>	
+<body>
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			<form method="post" action="{% url 'login' %}">
+				{% csrf_token %}
+				<h1>Login</h1>
+				<input name="email" type="email" placeholder="Email" />
+				<input name="password" type="password" placeholder="Password" />
+				<button>Log In</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+						
+					<img src="{% static 'img/VB.jpg' %}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	{% if error %}
+		alert("{{ error }}");
+	{% endif %}
+</script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Stations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e0e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+
+        .logout{
+     text-align: right;
+}
+ .logout img{
+     width: 15px;
+     height: 15px;
+}
+ .logout span{
+     font-size: smaller;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/res/app/admin/">
+            <div class="logout">
+                <span>Back</span>
+            </div>
+        </a>
+
+        <form method="post" action="{% url 'edit_stations' %}">
+            {% csrf_token %}
+            <h2>Edit Stations</h2>
+            <div>
+                <label for="stationId">Station ID:</label>
+                <input type="text" id="stationId" name="stationId" required>
+            </div>
+            <div>
+                <label for="stationName">Station Name:</label>
+                <input type="text" id="stationName" name="stationName">
+            </div>
+            <div>
+                <button type="submit" name="add-station">Add Station</button>
+                <button type="submit" name="delete-station">Delete Station</button>
+            </div>
+        </form>
+    </div>
+
+    {% if alertmessage %}
+    <script>
+        alert('{{ alertmessage }}');
+    </script>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+SET ECHO ON;
+
+CREATE SEQUENCE WeeklyScheduleSequence
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE;
+
+CREATE SEQUENCE CancelledSequence
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE;
+
+
+INSERT INTO Stations VALUES ('MAS', 'Chennai Central');
+INSERT INTO Stations VALUES ('MS', 'Chennai Egmore');
+INSERT INTO Stations VALUES ('TBM', 'Tambaram');
+INSERT INTO Stations VALUES ('AJJ', 'Arakkonam');
+INSERT INTO Stations VALUES ('KPD', 'Katpadi');
+INSERT INTO Stations VALUES ('JTJ', 'Jolarpet');
+INSERT INTO Stations VALUES ('SA', 'Salem');
+INSERT INTO Stations VALUES ('ED', 'Erode');
+INSERT INTO Stations VALUES ('CBE', 'Coimbatore');
+INSERT INTO Stations VALUES ('VM', 'Villupuram');
+INSERT INTO Stations VALUES ('TPJ', 'Trichy');
+INSERT INTO Stations VALUES ('MDU', 'Madurai');
+INSERT INTO Stations VALUES ('TEN', 'Tirunelveli');
+INSERT INTO Stations VALUES ('BWT', 'Bangarapet');
+INSERT INTO Stations VALUES ('KSR', 'KSR Bengaluru');
+
+INSERT INTO Trains VALUES (12675, 'Kovai Express', 'REG');
+INSERT INTO Trains VALUES (12673, 'Cheran Express', 'REG');
+INSERT INTO Trains VALUES (20643, 'Coimbatore VB', 'REG');
+INSERT INTO Trains VALUES (12658, 'Bengaluru Chennai Mail', 'REG');
+INSERT INTO Trains VALUES (12027, 'KSR Bengaluru Shatabdi', 'REG');
+INSERT INTO Trains VALUES (20607, 'Bengaluru VB', 'REG');
+INSERT INTO Trains VALUES (20665, 'Tirunelveli VB', 'REG');
+INSERT INTO Trains VALUES (12631, 'Nellai Express', 'REG');
+INSERT INTO Trains VALUES (12633, 'Kanyakumari Express', 'REG');
+INSERT INTO Trains VALUES (22649, 'Yercaud Express', 'REG');
+INSERT INTO Trains VALUES (22671, 'Tejas Express', 'REG');
+INSERT INTO Trains VALUES (12693, 'Pearl City Express', 'REG');
+INSERT INTO Trains VALUES (22625, 'Bengaluru Double Decker Express', 'REG');
+
+INSERT INTO Trains VALUES (12676, 'Kovai Express', 'REG');
+INSERT INTO Trains VALUES (12674, 'Cheran Express', 'REG');
+INSERT INTO Trains VALUES (20644, 'Coimbatore VB', 'REG');
+INSERT INTO Trains VALUES (12659, 'Bengaluru Chennai Mail', 'REG');
+INSERT INTO Trains VALUES (12028, 'KSR Bengaluru Shatabdi', 'REG');
+INSERT INTO Trains VALUES (20608, 'Bengaluru VB', 'REG');
+INSERT INTO Trains VALUES (20666, 'Tirunelveli VB', 'REG');
+INSERT INTO Trains VALUES (12632, 'Nellai Express', 'REG');
+INSERT INTO Trains VALUES (12634, 'Kanyakumari Express', 'REG');
+INSERT INTO Trains VALUES (22650, 'Yercaud Express', 'REG');
+INSERT INTO Trains VALUES (22672, 'Tejas Express', 'REG');
+INSERT INTO Trains VALUES (12694, 'Pearl City Express', 'REG');
+INSERT INTO Trains VALUES (22626, 'Bengaluru Double Decker Express', 'REG');
+
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,'MAS','MAS',NULL,NULL,'06:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,NULL,'AJJ',NULL,'09:30','10:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,NULL,'KPD',NULL,'10:30','11:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,NULL,'JTJ',NULL,'11:30','12:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,NULL,'SA',NULL,'12:30','13:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,NULL,'ED',NULL,'13:30','14:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12675,NULL,'CBE','CBE','14:30',NULL);
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,'CBE','CBE',NULL,NULL,'06:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,NULL,'ED',NULL,'09:30','10:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,NULL,'SA',NULL,'10:30','11:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,NULL,'JTJ',NULL,'11:30','12:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,NULL,'KPD',NULL,'12:30','13:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,NULL,'AJJ',NULL,'13:30','14:00');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12676,NULL,'MAS','MAS','14:30',NULL);
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12659,'KSR','KSR',NULL,NULL,'08:30');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12659,NULL,'BWT',NULL,'12:30','12:35');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12659,NULL,'JTJ',NULL,'13:00','13:05');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12659,NULL,'KPD',NULL,'13:30','13:35');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12659,NULL,'AJJ',NULL,'14:00','14:05');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12659,NULL,'MAS','MAS','14:30',NULL);
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12658,'MAS','MAS',NULL,NULL,'08:30');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12658,NULL,'AJJ',NULL,'12:30','12:35');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12658,NULL,'KPD',NULL,'13:00','13:05');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12658,NULL,'JTJ',NULL,'13:30','13:35');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12658,NULL,'BWT',NULL,'14:00','14:05');
+INSERT INTO WeeklySchedules VALUES (WeeklyScheduleSequence.NEXTVAL,12658,NULL,'KSR','KSR','14:30',NULL);
+
+INSERT INTO RunningDays VALUES (12675, '1111111');
+INSERT INTO RunningDays VALUES (12676, '1111111');
+INSERT INTO RunningDays VALUES (12659, '1111111');
+INSERT INTO RunningDays VALUES (12658, '1111111');
+
+INSERT INTO Availability VALUES (12675, 100, 475);
+INSERT INTO Availability VALUES (12676, 150, 875);
+INSERT INTO Availability VALUES (12659, 110, 1200);
+INSERT INTO Availability VALUES (12658, 200, 770);
+
+
+INSERT INTO CANCELLEDTRAINS VALUES (CancelledSequence.NEXTVAL,12675,TO_DATE('2023-12-01', 'YYYY-MM-DD'), 'MAS', 'CBE');
+INSERT INTO CANCELLEDTRAINS VALUES (CancelledSequence.NEXTVAL,12658,TO_DATE('2023-12-10', 'YYYY-MM-DD'), 'JTJ', 'BWT');
+
+COMMIT;
+
+SELECT * FROM TRAINS;
+SELECT * FROM STATIONS;
+SELECT * FROM WEEKLYSCHEDULES;
+SELECT * FROM RUNNINGDAYS;
+SELECT * FROM AVAILABILITY;

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cancel/Divert Trains</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e0e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+
+        .logout{
+     text-align: right;
+}
+ .logout img{
+     width: 15px;
+     height: 15px;
+}
+ .logout span{
+     font-size: smaller;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/res/app/admin/">
+            <div class="logout">
+                <span>Back</span>
+            </div>
+        </a>
+        <form method="post" action="{% url 'cancel_trains' %}">
+            {% csrf_token %}
+            <h2>Cancel/Divert Trains</h2>
+            <div>
+                <label for="trainNumber">Train Number:</label>
+                <input type="text" id="trainNumber" name="trainNumber" required>
+            </div>
+            <div>
+                <label for="startStation">Start Station:</label>
+                <select id="startStation" name="startStation" required>
+                    {% for station_details in stations.values %}
+                      <option value="origin-{{ station_details.stationid }}">{{ station_details.stationid }} - {{ station_details.stationname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="endStation">End Station:</label>
+                <select id="endStation" name="endStation" required>
+                    {% for station_details in stations.values %}
+                      <option value="destination-{{ station_details.stationid }}">{{ station_details.stationid }} - {{ station_details.stationname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="cancelDate">Cancel Date:</label>
+                <input type="date" id="cancelDate" name="cancelDate" required>
+            </div>
+            <div>
+                <button type="submit" name="add-cancelled-diverted">Add Cancelled/Diverted Train</button>
+            </div>
+        </form>
+    </div>
+
+    {% if alertmessage %}
+    <script>
+        alert("{{ alertmessage }}");
+    </script>
+    {% endif %}
+</body>
+</html>

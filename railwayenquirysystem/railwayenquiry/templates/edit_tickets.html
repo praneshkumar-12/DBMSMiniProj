@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Train Tickets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e0e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+
+        .logout{
+     text-align: right;
+}
+ .logout img{
+     width: 15px;
+     height: 15px;
+}
+ .logout span{
+     font-size: smaller;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/res/app/admin/">
+            <div class="logout">
+                <span>Back</span>
+            </div>
+        </a>
+
+        <form method="post" action="{% url 'edit_tickets' %}">
+            {% csrf_token %}
+            <h2>Edit Train Tickets</h2>
+            <div>
+                <label for="trainId">Train ID:</label>
+                <input type="text" id="trainId" name="trainId" required>
+            </div>
+            <div>
+                <label for="noOfTickets">Number of Tickets: (leave empty for existing value)</label>
+                <input type="number" id="noOfTickets" name="noOfTickets">
+            </div>
+            <div>
+                <label for="ticketCost">Ticket Cost: (leave empty for existing value)</label>
+                <input type="number" id="ticketCost" name="ticketCost">
+            </div>
+            <div>
+                <button type="submit" name="add-ticket">Add Tickets</button>
+                <button type="submit" name="update-ticket">Update Tickets</button>
+                <button type="submit" name="delete-ticket">Delete Tickets</button>
+            </div>
+        </form>
+    </div>
+
+    {% if alertmessage %}
+    <script>
+        alert('{{ alertmessage }}');
+    </script>
+    {% endif %}
+</body>
+</html>

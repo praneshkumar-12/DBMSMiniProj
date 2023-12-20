@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
+
+    <div class="flex justify-center">
+        <div class="text-4xl font-bold">Trains Schedule</div>
+    </div>
+    <br>
+
+    <form class="mb-8">
+        <div class="flex space-x-4">
+            <!-- Search Text Box -->
+            <div class="w-1/2">
+                <label for="trainSearch" class="block text-sm font-medium text-gray-700">Search by Train Number or Train Name</label>
+                <input type="text" id="trainSearch" name="trainSearch" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                oninput="searchTrains()">
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Search Results Table -->
+    <table class="table table-bordered">
+        <thead class="bg-blue-500 text-white">
+            <tr>
+                <th>S.No</th>
+                <th>Train No</th>
+                <th>Train Name</th>
+                <th>Departure Station</th>
+                <th>Departure Time</th>
+                <th>Arrival Station</th>
+                <th>Arrival Time</th>
+                <th>Journey Time</th>
+                <th>Running Days</th>
+                <th>Route</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for sno, train_detail in trains.items %}
+            <tr>
+                <td>{{ sno }}</td>
+                <td>{{ train_detail.TrainID }}</td>
+                <td>{{ train_detail.TrainName }}</td>
+                <td>{{ train_detail.DepartingStation }}</td>
+                <td>{{ train_detail.DepartureTime }}</td>
+                <td>{{ train_detail.ArrivalStation }}</td>
+                <td>{{ train_detail.ArrivalTime }}</td>
+                <td>{{ train_detail.JourneyTime }}</td>
+                <td>{{ train_detail.RunningDays }}</td>
+                <td><button name="{{ train_detail.TrainID }}_{{ train_detail.DepartingStationCode }}_{{ train_detail.ArrivalStationCode }}" id="route-btn" class="inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300" onclick="displayRoute(this.name)">Show Route</button></td>
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function searchTrains() {
+        var input, filter, table, tr, tdTrainNo, tdTrainName, i, txtValueTrainNo, txtValueTrainName;
+        input = document.getElementById("trainSearch");
+        filter = input.value.toUpperCase();
+        table = document.querySelector("table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            // Skip the header row
+            if (i === 0) continue;
+
+            tdTrainNo = tr[i].getElementsByTagName("td")[1]; // Index 1 corresponds to Train No column
+            tdTrainName = tr[i].getElementsByTagName("td")[2]; // Index 2 corresponds to Train Name column
+
+            if (tdTrainNo && tdTrainName) {
+                txtValueTrainNo = tdTrainNo.textContent || tdTrainNo.innerText;
+                txtValueTrainName = tdTrainName.textContent || tdTrainName.innerText;
+
+                if (txtValueTrainNo.toUpperCase().indexOf(filter) > -1 || txtValueTrainName.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function displayRoute(route_details){
+    url = "/res/app/show_route/" + route_details + "/";
+
+    console.log(url);
+
+    window.open(url, '_blank').focus()
+    }
+</script>
+
+{% endblock %}

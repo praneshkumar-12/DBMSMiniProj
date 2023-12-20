@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Stations Flow Chart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css">
+</head>
+<body>
+
+<div id="trainStationsNetwork"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Sample data representing train stations and connections
+        const nodes = new vis.DataSet([
+            {id: 1, label: 'Station A'},
+            {id: 2, label: 'Station B'},
+            {id: 3, label: 'Station C'},
+            // Add more nodes as needed
+        ]);
+
+        const edges = new vis.DataSet([
+            {from: 1, to: 2, label: 'Connection 1'},
+            {from: 2, to: 3, label: 'Connection 2'},
+            // Add more edges as needed
+        ]);
+
+        const container = document.getElementById('trainStationsNetwork');
+        const data = {
+            nodes: nodes,
+            edges: edges
+        };
+        const options = {};
+
+        const network = new vis.Network(container, data, options);
+    });
+</script>
+
+</body>
+</html>

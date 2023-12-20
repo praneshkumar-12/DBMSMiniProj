@@ -1,0 +1,11 @@
+// Train Schedule
+digraph {
+	0 [label="Station A"]
+	1 [label="Station B"]
+	0 -> 1 [label="Arrival: 10:00 AM
+Departure: 10:15 AM"]
+	1 [label="Station B"]
+	2 [label="Station C"]
+	1 -> 2 [label="Arrival: 11:00 AM
+Departure: 11:30 AM"]
+}

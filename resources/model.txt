@@ -1,0 +1,86 @@
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(1, 12675, 'MAS', 'CBE', '06:00', '09:30', '1111111');
+-- Schedule for Cheran Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(2, 12673, 'MAS', 'CBE', '10:00', '13:30', '1111111');
+-- Schedule for Coimbatore VB
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(3, 20643, 'MAS', 'CBE', '14:00', '17:30', '1111111');
+-- Schedule for Bengaluru Chennai Mail
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(4, 12658, 'MAS', 'KSR', '18:00', '22:00', '1111111');
+-- Schedule for KSR Bengaluru Shatabdi
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(5, 12027, 'MAS', 'KSR', '08:00', '12:00', '1111111');
+-- Schedule for Bengaluru VB
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(6, 20607, 'MAS', 'KSR', '14:00', '18:00', '1111111');
+-- Schedule for Tirunelveli VB
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(7, 20665, 'MS', 'TEN', '06:30', '11:30', '1111111');
+-- Schedule for Nellai Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(8, 12631, 'MS', 'TEN', '12:00', '17:00', '1111111');
+-- Schedule for Kanyakumari Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(9, 12633, 'MS', 'TEN', '17:30', '22:30', '1111111');
+-- Schedule for Yercaud Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(10, 22649, 'MAS', 'ED', '09:00', '12:00', '1111111');
+-- Schedule for Tejas Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(11, 22671, 'MS', 'MDU', '14:00', '16:30', '1111111');
+-- Schedule for Pearl City Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(12, 12693, 'MS', 'TEN', '18:00', '22:00', '1111111');
+-- Schedule for Bengaluru Double Decker Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES(13, 22625, 'MAS', 'KSR', '08:30', '12:30', '1111111');
+
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (14, 12676, 'CBE', 'MAS', '06:00', '11:00', '1111111');
+-- WeeklySchedule for Cheran Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (15, 12674, 'CBE', 'MAS', '10:00', '15:00', '1111111');
+-- WeeklySchedule for Coimbatore VB
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (16, 20644, 'CBE', 'MAS', '14:00', '17:30', '1111111');
+-- WeeklySchedule for Bengaluru Chennai Mail
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (17, 12659, 'KSR', 'MAS', '18:00', '22:00', '1111111');
+-- WeeklySchedule for KSR Bengaluru Shatabdi
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (18, 12028, 'KSR', 'MAS', '08:00', '12:00', '1111111');
+-- WeeklySchedule for Bengaluru VB
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (19, 20608, 'KSR', 'MAS', '14:00', '18:00', '1111111');
+-- WeeklySchedule for Tirunelveli VB
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (20, 20666, 'TEN', 'MS', '06:30', '11:30', '1111111');
+-- WeeklySchedule for Nellai Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (21, 12632, 'TEN', 'MS', '12:00', '17:00', '1111111');
+-- WeeklySchedule for Kanyakumari Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (22, 12634, 'TEN', 'MS', '17:30', '22:30', '1111111');
+-- WeeklySchedule for Yercaud Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (23, 22650, 'ED', 'MAS', '09:00', '12:00', '1111111');
+-- WeeklySchedule for Tejas Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (24, 22672, 'MDU', 'MS', '14:00', '16:30', '1111111');
+-- WeeklySchedule for Pearl City Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (25, 12694, 'TEN', 'MS', '18:00', '22:00', '1111111');
+-- WeeklySchedule for Bengaluru Double Decker Express
+INSERT INTO WeeklySchedules (ScheduleID, TrainID, StartStationID, EndStationID, DepartureTime, ArrivalTime, RunningDays) VALUES (26, 22626, 'KSR', 'MAS', '08:30', '12:30', '1111111');
+
+
+
+
+[[12675, "'MAS'", "'MAS'", 'NULL',  'NULL', '06:00'],
+[12675, 'NULL', "'AJJ'", 'NULL', '09:30', '10:00'],
+[12675, 'NULL', "'KPD'", 'NULL', '10:30', '11:00'],
+[12675, 'NULL', "'JTJ'", 'NULL', '11:30', '12:00'],
+[12675, 'NULL', "'SA'",  'NULL', '12:30', '13:00'],
+[12675, 'NULL', "'ED'",  'NULL', '13:30', '14:00'],
+[12675, 'NULL', "'CBE'", "'CBE'",  '14:30', 'NULL'],
+
+[12676, "'CBE'", "'CBE'", 'NULL',  'NULL', '06:00'],
+[12676, 'NULL', "'ED'",  'NULL', '09:30', '10:00'],
+[12676, 'NULL', "'SA'",  'NULL', '10:30', '11:00'],
+[12676, 'NULL', "'JTJ'", 'NULL', '11:30', '12:00'],
+[12676, 'NULL', "'KPD'", 'NULL', '12:30', '13:00'],
+[12676, 'NULL', "'AJJ'", 'NULL', '13:30', '14:00'],
+[12676, 'NULL', "'MAS'", "'MAS'",  '14:30', 'NULL'],
+
+
+[12657, "'KSR'", "'KSR'", 'NULL', 'NULL', '08:30'],
+[12657, 'NULL', "'BWT'", 'NULL', '12:30', '12:35'],
+[12657, 'NULL', "'JTJ'", 'NULL', '13:00', '13:05'],
+[12657, 'NULL', "'KPD'", 'NULL', '13:30', '13:35'],
+[12657, 'NULL', "'AJJ'", 'NULL', '14:00', '14:05'],
+[12657, 'NULL', "'MAS'", "'MAS'", '14:30', 'NULL'],
+
+[12658, "'MAS'", "'MAS'", 'NULL', 'NULL', '08:30'],
+[12658, 'NULL', "'AJJ'", 'NULL', '12:30', '12:35'],
+[12658, 'NULL', "'KPD'", 'NULL', '13:00', '13:05'],
+[12658, 'NULL', "'JTJ'", 'NULL', '13:30', '13:35'],
+[12658, 'NULL', "'BWT'", 'NULL', '14:00', '14:05'],
+[12658, 'NULL', "'KSR'", "'KSR'", '14:30', 'NULL'],
+]
